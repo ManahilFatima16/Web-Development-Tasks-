@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dark Mode To-Do List</title>
+
+<style>
+/* ========== BODY ========== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+    color: #e5e7eb;
+}
+
+/* ========== CONTAINER ========== */
+.todo-container {
+    width: 420px;
+    padding: 30px 35px;
+    background: rgba(30, 41, 59, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* ========== TITLE ========== */
+h2 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+/* ========== INPUT ========== */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    font-size: 16px;
+}
+
+/* ========== BUTTONS ========== */
+button {
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 12px;
+    background: #22c55e;
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* ========== LIST ========== */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: rgba(51, 65, 85, 0.8);
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+li.completed span {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+li span {
+    flex: 1;
+}
+
+/* ========== TASK BUTTONS ========== */
+li button {
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.edit-btn {
+    background: #38bdf8;
+    color: white;
+}
+
+.delete-btn {
+    background: #ef4444;
+    color: white;
+}
+
+.save-btn {
+    background: #22c55e;
+    color: white;
+}
+
+/* ========== EDIT MODE ========== */
+li.editing input {
+    flex: 1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="todo-container">
+    <h2>My To-Do List</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter new task...">
+    <button class="add-btn" onclick="addTask()">Add Task</button>
+
+    <ul id="taskList"></ul>
+</div>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+const taskInput = document.getElementById("taskInput");
+const taskList = document.getElementById("taskList");
+
+/* ===== DISPLAY TASKS ===== */
+function displayTasks() {
+    taskList.innerHTML = "";
+
+    tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        if (task.completed) li.classList.add("completed");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.completed;
+        checkbox.onchange = () => toggleCompleted(index);
+
+        const span = document.createElement("span");
+        span.textContent = task.text;
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.className = "edit-btn";
+        editBtn.onclick = () => editTask(index, li);
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.className = "delete-btn";
+        deleteBtn.onclick = () => deleteTask(index);
+
+        li.append(checkbox, span, editBtn, deleteBtn);
+        taskList.appendChild(li);
+    });
+}
+
+/* ===== ADD TASK ===== */
+function addTask() {
+    const text = taskInput.value.trim();
+    if (!text) return alert("Please enter a task!");
+
+    tasks.push({ text, completed: false });
+    taskInput.value = "";
+    saveAndRender();
+}
+
+/* ===== DELETE TASK ===== */
+function deleteTask(index) {
+    if (!confirm("Are you sure you want to delete this task?")) return;
+    tasks.splice(index, 1);
+    saveAndRender();
+}
+
+/* ===== EDIT TASK ===== */
+function editTask(index, li) {
+    li.classList.add("editing");
+    li.innerHTML = "";
+
+    const input = document.createElement("input");
+    input.value = tasks[index].text;
+
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "Save";
+    saveBtn.className = "save-btn";
+
+    saveBtn.onclick = () => {
+        const updatedText = input.value.trim();
+        if (!updatedText) return alert("Task cannot be empty!");
+        tasks[index].text = updatedText;
+        saveAndRender();
+    };
+
+    li.append(input, saveBtn);
+}
+
+/* ===== TOGGLE COMPLETE ===== */
+function toggleCompleted(index) {
+    tasks[index].completed = !tasks[index].completed;
+    saveAndRender();
+}
+
+/* ===== SAVE & RENDER ===== */
+function saveAndRender() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    displayTasks();
+}
+
+displayTasks();
+</script>
+
+</body>
+</html>
