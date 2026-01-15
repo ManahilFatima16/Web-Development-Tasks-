@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manahil Fatima | Portfolio</title>
+
+    <style>
+        /* ================= BODY ================= */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: #ffffff;
+            scroll-behavior: smooth; /* smooth scrolling */
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0f172a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h2 {
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* ================= SECTIONS ================= */
+        section {
+            padding: 60px;
+        }
+
+        h2 {
+            color: #38bdf8;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        section:nth-of-type(2) h2 { animation-delay: 0.2s; }
+        section:nth-of-type(3) h2 { animation-delay: 0.4s; }
+        section:nth-of-type(4) h2 { animation-delay: 0.6s; }
+        section:nth-of-type(5) h2 { animation-delay: 0.8s; }
+        section:nth-of-type(6) h2 { animation-delay: 1s; }
+        section:nth-of-type(7) h2 { animation-delay: 1.2s; }
+        section:nth-of-type(8) h2 { animation-delay: 1.4s; }
+        section:nth-of-type(9) h2 { animation-delay: 1.6s; }
+
+        p, ul {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-text {
+            width: 55%;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        .hero-text h1 {
+            font-size: 40px;
+            margin: 10px 0;
+        }
+
+        .hero-text h3 {
+            color: #38bdf8;
+        }
+
+        .hero-image {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards;
+            animation-delay: 0.3s;
+        }
+
+        .hero-image img {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 25px #38bdf8;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05);
+        }
+
+        /* ================= CARDS ================= */
+        .card {
+            background-color: #020617;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        /* ================= BUTTONS ================= */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.5);
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* ================= ANIMATIONS ================= */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>Portfolio.</h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- INTRODUCTION -->
+<section class="hero" id="home">
+    <div class="hero-text">
+        <p>Hello, It's Me</p>
+        <h1>Manahil Fatima</h1>
+        <h3>Web Development Intern</h3>
+        <p>
+            I am a beginner web development intern and a Computer Science student.
+            I am currently learning HTML and CSS and building simple projects to
+            strengthen my frontend development skills.
+        </p>
+    </div>
+
+    <div class="hero-image">
+        <img src="portfolio.jpg" alt="Manahil Fatima">
+    </div>
+</section>
+
+<!-- BACKGROUND -->
+<section id="about">
+    <h2>Background</h2>
+    <div class="card">
+        <p>
+            <b>Education:</b><br>
+            Bachelor of Computer Science (4th Semester)<br>
+            Sukkur IBA University
+        </p>
+
+        <p>
+            <b>Learning:</b><br>
+            Web Development (HTML, CSS – Beginner)<br>
+            Programming fundamentals and problem-solving
+        </p>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="card">
+        <ul>
+            <li>HTML (Beginner)</li>
+            <li>CSS (Beginner)</li>
+            <li>C++ (Academic)</li>
+            <li>Data Structures (Core Concepts)</li>
+            <li>Java (Basic)</li>
+            <li>Problem Solving</li>
+            <li>Teamwork & Communication</li>
+        </ul>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>Projects</h2>
+
+    <div class="card">
+        <p><b>Hospital Management System (Academic Project)</b></p>
+        <p>
+            Developing a hospital management system to manage patient and doctor
+            records as part of an academic project.
+        </p>
+    </div>
+
+    <div class="card">
+        <p><b>Space Invaders Game (C++)</b></p>
+        <p>
+            Created a Space Invaders game using C++ to understand game logic,
+            loops, and object-oriented programming concepts.
+        </p>
+    </div>
+
+    <div class="card">
+        <p><b>Chat Application (Data Structures Project)</b></p>
+        <p>
+            Developed a chat application to implement and understand core
+            data structures concepts such as queues, stacks, and linked lists.
+        </p>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+    <h2>Experience</h2>
+    <div class="card">
+        <p>
+            <b>Web Development Intern (Unpaid)</b><br>
+            Learning frontend development fundamentals, practicing HTML and CSS,
+            and working on simple portfolio-based tasks.
+        </p>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+    <h2>Testimonials</h2>
+    <div class="card">
+        <p>
+            Testimonials are not available yet and will be added as professional
+            experience and feedback are gained.
+        </p>
+    </div>
+</section>
+
+<!-- BLOG -->
+<section>
+    <h2>Blog / Articles</h2>
+    <div class="card">
+        <p>
+            Planning to write short articles about my learning journey in web
+            development and computer science.
+        </p>
+    </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section>
+    <h2>Achievements</h2>
+    <div class="card">
+        <ul>
+            <li>Currently pursuing BS Computer Science (4th Semester)</li>
+            <li>Selected for Web Development Internship</li>
+            <li>Completed multiple academic projects</li>
+        </ul>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+       <p>
+            <b>Email:</b> smanahil001@gmail.com<br>
+            <b>GitHub:</b> <a href="https://github.com/ManahilFatima16" target="_blank" style="color:#38bdf8;">ManahilFatima16</a><br>
+            <b>LinkedIn:</b> Will be added soon<br>
+            <b>Location:</b> Sukkur, Pakistan.
+       </p>
+    </div>
+</section>
+
+<footer>
+  © 2026 | Manahil Fatima — Computer Science Undergraduate
+</footer>
+
+</body>
+</html>
